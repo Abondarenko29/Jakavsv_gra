@@ -30,13 +30,14 @@ class MapMennager ():
     def create (self, dir):
         with open (dir, "r", encoding = "utf-8") as f:
             y = 0
+            x = 0
             for lineb in f:
                 element = lineb.split (" ")
                 element = element[0:-1]
                 for i in element:
-                    x = 0
                     for z in range (int(i)):
                         self.addBlock ((x, y, z), texture = self.texture[z])
-                        x += 1
+                        print (x, y, z)
                     y += 1
-                print (element)
+                y = 0
+                x += 1

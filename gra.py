@@ -3,6 +3,9 @@ from modules.generator import MapMennager
 from pandac.PandaModules import WindowProperties 
 from modules.colors import *
 import modules.player as playerClass
+from panda3d.core import TextNode
+from direct.gui.OnscreenText import OnscreenText
+
 
 
 ICON = "textures/wood.jpg"
@@ -17,10 +20,16 @@ class Game (ShowBase):
         self.set_background_color (LightBlue)
         windata = WindowProperties ()
         windata.setTitle ("0,6³-2•0,6²•0,8+0,6•0,8²-2•0,8³=-1")
+        windata.setCursorHidden (False)
         base.win.requestProperties (windata)
         base.camLens.setFov (90)
         self.mapmanager = MapMennager ()
-        self.player = playerClass.Player ((0, 30, 10), self.mapmanager)
+        self.player = playerClass.Player ((0, 30, 1), self.mapmanager)
+        self.music = loader.loadMusic ("music/test.ogg")
+        self.music.setVolume (.2)
+        self.music.setLoopCount (2)
+        self.music.setTime (70)
+        self.music.play ()
 
 game = Game ()
 
